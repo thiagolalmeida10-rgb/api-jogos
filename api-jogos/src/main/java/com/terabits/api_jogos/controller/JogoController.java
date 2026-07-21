@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/jogos")
+@CrossOrigin(origins = "*")
 public class JogoController {
 
     private final JogoService service;
@@ -17,7 +18,6 @@ public class JogoController {
     public JogoController(JogoService service) {
         this.service = service;
     }
-
 
     @PostMapping
     public ResponseEntity<JogoDTO> salvar(@RequestBody JogoDTO dto) {
@@ -28,7 +28,6 @@ public class JogoController {
                 .status(HttpStatus.CREATED)
                 .body(jogo);
     }
-
 
     @GetMapping
     public ResponseEntity<List<JogoDTO>> listar() {
